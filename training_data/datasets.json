@@ -1,0 +1,160 @@
+{
+    "// DOCUMENTATION": {
+        "description": "Dataset configuration file for the UoM Deep Learning Workshop",
+        "format": {
+            "url": "Direct download URL for the dataset archive",
+            "description": "Brief description of the dataset",
+            "website": "Original source or reference website",
+            "authors": "List of authors/creators of the dataset",
+            "year": "Publication or release year",
+            "category": "Primary task type the dataset is designed for"
+        },
+        "usage": "These datasets can be downloaded using the download_dataset function"
+    },
+    "// PHYSICS DATASETS": {},
+    "cylinder": {
+        "url": "https://github.com/maziarraissi/PINNs/raw/refs/heads/master/main/Data/cylinder_nektar_wake.mat",
+        "description": "Cylinder dataset for predicting the drag coefficient of a cylinder in a flow field",
+        "website": "https://arxiv.org/pdf/1711.10566.pdf",
+        "authors": ["Maziar Raissi1", "Paris Perdikaris", "George Em Karniadakis"],
+        "year": 2017,
+        "category": "PINNs"
+    },
+    
+    "// IMAGE SEGMENTATION DATASETS": {},
+    "skin lesions test": {
+        "url": "https://isic-challenge-data.s3.amazonaws.com/2016/ISBI2016_ISIC_Part1_Test_Data.zip",
+        "description": "Skin Lesion Analysis Towards Melanoma Detection Test Data",
+        "website": "https://challenge.isic-archive.com/data",
+        "authors": ["Tschandl, P.", "Rosendahl, C.", "Kittler, H."],
+        "year": 2016,
+        "category": "image segmentation"
+    },
+    "skin lesions test masks": {
+        "url": "https://isic-challenge-data.s3.amazonaws.com/2016/ISBI2016_ISIC_Part1_Test_GroundTruth.zip",
+        "description": "Skin Lesion Analysis Towards Melanoma Detection Test Masks",
+        "website": "https://challenge.isic-archive.com/data",
+        "authors": ["Tschandl, P.", "Rosendahl, C.", "Kittler, H."],
+        "year": 2016,
+        "category": "image segmentation"
+    },
+    "skin lesions": {
+        "url": "https://isic-challenge-data.s3.amazonaws.com/2016/ISBI2016_ISIC_Part1_Training_Data.zip",
+        "description": "Skin Lesion Analysis Towards Melanoma Detection",
+        "website": "https://challenge.isic-archive.com/data",
+        "authors": ["Tschandl, P.", "Rosendahl, C.", "Kittler, H."],
+        "year": 2016,
+        "category": "image segmentation"
+    },
+    "skin lesions masks": {
+        "url": "https://isic-challenge-data.s3.amazonaws.com/2016/ISBI2016_ISIC_Part1_Training_GroundTruth.zip",
+        "description": "Skin Lesion Analysis Towards Melanoma Detection Masks",
+        "website": "https://challenge.isic-archive.com/data",
+        "authors": ["Tschandl, P.", "Rosendahl, C.", "Kittler, H."],
+        "year": 2016,
+        "category": "image segmentation"
+    },
+    "historical cracks": {
+        "url": "https://prod-dcd-datasets-cache-zipfiles.s3.eu-west-1.amazonaws.com/xfk99kpmj9-1.zip",
+        "description": "Historical-crack18-19: A dataset of annotated images for non-invasive surface crack detection in historical buildings",
+        "website": "https://www.sciencedirect.com/science/article/pii/S2352340922000774#fig0001",
+        "authors": ["Esraa Elhariri", "Nashwa El-Bendary", "Shereen Taie"],
+        "year": 2020,
+        "category": "image segmentation"
+    },
+
+    "insulators":{
+        "url": "https://zenodo.org/records/11287111/files/insulator-segmentation.zip?download=1",
+        "description": "InsulatorBD: A dataset for detecting insulator defects in power transmission lines",
+        "website": "https://www.sciencedirect.com/science/article/pii/S2352340924006553",
+        "authors": ["Reinaldo A.C. Bianchi a", "Hericles F. Ferraz b", "Rogério S. Gonçalves b"],
+        "year": 2024,
+        "category": "image segmentation"
+    },
+
+    "// CLASSIFICATION DATASETS": {},
+    "promoters": {
+        "url": "https://archive.ics.uci.edu/static/public/67/molecular+biology+promoter+gene+sequences.zip",
+        "description": "Promoter sequences of E. coli for predicting promoter regions",
+        "website": "https://archive.ics.uci.edu/dataset/67/molecular+biology+promoter+gene+sequences",
+        "authors": ["C. Harley", "R. Reynolds", "M. Noordewier"],
+        "year": 1990,
+        "category": "classification"
+    },
+    "steel plates faults": {
+        "url": "https://archive.ics.uci.edu/static/public/198/steel+plates+faults.zip",
+        "description": "Dataset for classifying steel plates faults into 7 different types",
+        "website": "https://archive.ics.uci.edu/dataset/198/steel+plates+faults",
+        "authors": ["Mykola Pechenizkiy", "Alexey Tsymbal"],
+        "year": 2009,
+        "category": "classification"
+    },
+    "mango leaves": {
+        "url": "https://prod-dcd-datasets-cache-zipfiles.s3.eu-west-1.amazonaws.com/nnh69sng8p-5.zip",
+        "description": "MangoLeafBD: A comprehensive image dataset to classify diseased and healthy mango leaves",
+        "website": "https://www.sciencedirect.com/science/article/pii/S2352340923000598",
+        "authors": ["Sarder Iftekhar Ahmed", "Muhammad Ibrahim", "Md. Nadim"],
+        "year": 2023,
+        "category": "image classification"
+    },
+    "clinical cultures": {
+        "url": "https://prod-dcd-datasets-cache-zipfiles.s3.eu-west-1.amazonaws.com/xrbtd74pfj-3.zip",
+        "description": "Image dataset of urine test results on petri dishes for deep learning classification",
+        "website": "https://www.sciencedirect.com/science/article/pii/S235234092300152X",
+        "authors": ["Gabriel Rodrigues da Silva", "Igor Batista Rosmaninho", "Eduardo Zancul"],
+        "year": 2023,
+        "category": "image classification"
+    },
+    "cotton fabrics": {
+        "url": "https://prod-dcd-datasets-cache-zipfiles.s3.eu-west-1.amazonaws.com/3vc56ddjhw-2.zip",
+        "description": "CottonFabricImageBD: An image dataset characterized by the percentage of cotton in a fabric for computer vision-based garment recycling",
+        "website": "https://www.sciencedirect.com/science/article/pii/S2352340924006796#refdata001",
+        "authors": ["Nishat Tasnim Niloy", "Md. Rayhan Ahmed", "Sinthia Sarkar Ananna"],
+        "year": 2024,
+        "category": "image classification"
+    },
+
+    "// REGRESSION DATASETS": {},
+    "challenger": {
+        "url": "https://archive.ics.uci.edu/static/public/92/challenger+usa+space+shuttle+o+ring.zip",
+        "description": "Challenger USA Space Shuttle O-Ring dataset for predicting the failure of O-rings",
+        "website": "https://archive.ics.uci.edu/dataset/92/challenger+usa+space+shuttle+o+ring",
+        "authors": ["Draper, D."],
+        "year": 1993,
+        "category": "regression"
+    },
+    "air quality": {
+        "url": "https://archive.ics.uci.edu/static/public/360/air+quality.zip",
+        "description": "Air Quality dataset from an Italian city with hourly averaged responses from gas sensors",
+        "website": "https://archive.ics.uci.edu/dataset/360/air+quality",
+        "authors": ["Save De Vito", "Ettore Massera", "Marco Piga"],
+        "year": 2008,
+        "category": "regression"
+    },
+    "ARKOMA": {
+        "url": "https://prod-dcd-datasets-cache-zipfiles.s3.eu-west-1.amazonaws.com/brg4dz8nbb-1.zip",
+        "description": "ARKOMA: The Dataset to Build Neural Networks-Based Inverse Kinematics for NAO Robot Arms",
+        "website": "https://www.sciencedirect.com/science/article/pii/S2352340923007989",
+        "authors": ["Arif Nugroho", "Eko Mulyanto Yuniarno", "Mauridhi Hery Purnomo"],
+        "year": 2020,
+        "category": "regression"
+    },
+
+    "// MULTI-TASK DATASETS": {},
+    "alphonso mangoes": {
+        "url": "https://prod-dcd-datasets-cache-zipfiles.s3.eu-west-1.amazonaws.com/8sjny373pz-1.zip",
+        "description": "AMDPWE: Alphonso Mango Dataset for Precision Weight Estimation",
+        "website": "https://www.sciencedirect.com/science/article/pii/S2352340923008429",
+        "authors": ["Akshatha Prabhu,N.", "Shobha Rani"],
+        "year": 2023,
+        "category": "image classification and regression"
+    },
+    "UCSD birds": {
+        "url": "https://data.caltech.edu/records/65de6-vp158/files/CUB_200_2011.tgz",
+        "description": "UCSD Birds 200: A dataset of 200 bird species with images and annotations",
+        "website": "https://www.vision.caltech.edu/datasets/cub_200_2011/",
+        "authors": ["Wah, C.", "Branson, S.", "Welinder, P.", "Perona, P.", "Belongie, S."],
+        "year": 2011,
+        "category": "object detection and classification"
+    }
+}
