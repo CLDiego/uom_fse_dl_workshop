@@ -105,6 +105,16 @@
         "category": "image classification"
     },
 
+    "// AUDIO/MEDICAL DATASETS": {},
+    "HLS-CMDS": {
+        "url": "https://archive.ics.uci.edu/static/public/1202/hls-cmds:+heart+and+lung+sounds+dataset+recorded+from+a+clinical+manikin+using+digital+stethoscope.zip",
+        "description": "Heart and Lung Sounds Dataset: 535 audio recordings of normal and abnormal cardiopulmonary sounds from clinical manikin for AI-based disease detection",
+        "website": "https://archive.ics.uci.edu/dataset/1202/hls-cmds:+heart+and+lung+sounds+dataset+recorded+from+a+clinical+manikin+using+digital+stethoscope",
+        "authors": ["Yasaman Torabi", "Shahram Shirani", "James P. Reilly"],
+        "year": 2025,
+        "category": "audio classification"
+    },
+
     "// REGRESSION DATASETS": {},
     "challenger": {
         "url": "https://archive.ics.uci.edu/static/public/92/challenger+usa+space+shuttle+o+ring.zip",
