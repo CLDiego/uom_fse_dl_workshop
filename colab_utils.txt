@@ -16,3 +16,4 @@ https://raw.githubusercontent.com/CLDiego/uom_fse_dl_workshop/main/utils/plottin
 https://raw.githubusercontent.com/CLDiego/uom_fse_dl_workshop/main/utils/plotting/formatting.py
 https://raw.githubusercontent.com/CLDiego/uom_fse_dl_workshop/main/utils/plotting/interactive.py
 https://raw.githubusercontent.com/CLDiego/uom_fse_dl_workshop/main/utils/plotting/plots.py
+https://raw.githubusercontent.com/CLDiego/uom_fse_dl_workshop/main/utils/plotting/se02_plots.py
