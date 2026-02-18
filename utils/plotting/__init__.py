@@ -24,6 +24,7 @@ from .fonts import *
 from .formatting import *
 from .plots import *
 from .interactive import *
+from .se02_plots import *
 
 from .fonts import __all__ as fonts_all
 from .formatting import __all__ as formatting_all
@@ -35,6 +36,7 @@ __all__.extend(fonts_all)
 __all__.extend(formatting_all)
 __all__.extend(plots_all)
 __all__.extend(interactive_all)
+__all__.extend(se02_plots_all)
 
 from .plots import plot_loss, plot_distribution, visualize_network_nx
 from .formatting import format_tick_label, format_axis_ticks, format_spines, make_fig_pretty
@@ -45,6 +47,6 @@ from .se02_plots import plot_2d_classification, plot_training_loss, plot_model_c
 __all__ = [
     "plot_loss", "plot_distribution", "visualize_network_nx",
     "format_tick_label", "format_axis_ticks", "format_spines", "make_fig_pretty",
-    "load_font", "create_interactive_neuron_visualizer"
+    "load_font", "create_interactive_neuron_visualizer", "plot_2d_classification", "plot_training_loss", "plot_model_comparison"
 ]
 
