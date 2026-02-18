@@ -63,15 +63,6 @@
         "category": "image segmentation"
     },
 
-    "insulators":{
-        "url": "https://zenodo.org/records/11287111/files/insulator-segmentation.zip?download=1",
-        "description": "InsulatorBD: A dataset for detecting insulator defects in power transmission lines",
-        "website": "https://www.sciencedirect.com/science/article/pii/S2352340924006553",
-        "authors": ["Reinaldo A.C. Bianchi a", "Hericles F. Ferraz b", "Rogério S. Gonçalves b"],
-        "year": 2024,
-        "category": "image segmentation"
-    },
-
     "// CLASSIFICATION DATASETS": {},
     "promoters": {
         "url": "https://archive.ics.uci.edu/static/public/67/molecular+biology+promoter+gene+sequences.zip",
@@ -112,6 +103,16 @@
         "authors": ["Nishat Tasnim Niloy", "Md. Rayhan Ahmed", "Sinthia Sarkar Ananna"],
         "year": 2024,
         "category": "image classification"
+    },
+
+    "// AUDIO/MEDICAL DATASETS": {},
+    "HLS-CMDS": {
+        "url": "https://archive.ics.uci.edu/static/public/1202/hls-cmds:+heart+and+lung+sounds+dataset+recorded+from+a+clinical+manikin+using+digital+stethoscope.zip",
+        "description": "Heart and Lung Sounds Dataset: 535 audio recordings of normal and abnormal cardiopulmonary sounds from clinical manikin for AI-based disease detection",
+        "website": "https://archive.ics.uci.edu/dataset/1202/hls-cmds:+heart+and+lung+sounds+dataset+recorded+from+a+clinical+manikin+using+digital+stethoscope",
+        "authors": ["Yasaman Torabi", "Shahram Shirani", "James P. Reilly"],
+        "year": 2025,
+        "category": "audio classification"
     },
 
     "// REGRESSION DATASETS": {},
