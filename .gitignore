@@ -6,3 +6,4 @@ torch_fse/
 pyproject.toml
 .gitignore
 uv.lock
+.DS_Store
