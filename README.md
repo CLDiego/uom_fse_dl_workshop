@@ -1,4 +1,7 @@
 ![](https://i.imgur.com/mTltzAc.png)
+
+> **⚠️ Development Branch Notice**: This `colab` branch is primarily for development purposes. For the stable version of the workshop materials, please refer to the `main` branch.
+
 ## Workshop Overview 📋
 
 This hands-on workshop will guide participants through the fundamentals of deep learning with PyTorch, covering:
