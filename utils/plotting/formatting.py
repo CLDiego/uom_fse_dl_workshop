@@ -40,26 +40,26 @@ def format_axis_ticks(
 ) -> None:
     """
     Format ticks for a given axis (x, y, or z).
-    
-    Args:
-        ax: Matplotlib axis object
-        axis: Which axis to format ('x', 'y', or 'z')
-        share_axis: Whether axis is shared
-        is_3d: Whether plot is 3D
-        font_manager: Font manager instance
-        tick_size: Font size for tick labels
     """
     # Set ticks
     getattr(ax, f'set_{axis}ticks')(getattr(ax, f'get_{axis}ticks')())
     
+    # Check if axis is log scale
+    is_log = getattr(ax, f'get_{axis}scale')() == 'log'
+    
     # Handle shared axes
     if share_axis and not is_3d and axis in ['x', 'y']:
         getattr(ax, f'set_{axis}ticklabels')([''] * len(getattr(ax, f'get_{axis}ticklabels')()))
+        return
         
     # Format labels if they exist
     labels = [label.get_text() for label in getattr(ax, f'get_{axis}ticklabels')()]
     if all(labels):
-        labels_fmt = [format_tick_label(label) for label in labels]
+        if is_log:
+            # For log scale, keep original formatting
+            labels_fmt = labels
+        else:
+            labels_fmt = [format_tick_label(label) for label in labels]
         getattr(ax, f'set_{axis}ticklabels')(labels_fmt)
         
     # Apply font properties
@@ -69,14 +69,7 @@ def format_axis_ticks(
 
 def format_spines(ax: Axes, ylabels_fmt: Optional[List[str]], sharey: bool, timestamp: bool, tufte_style: bool = False) -> None:
     """
-    Format plot spines (borders) following Tufte principles when enabled.
-    
-    Args:
-        ax: Matplotlib axis object
-        ylabels_fmt: Formatted y-axis labels
-        sharey: Whether y-axis is shared
-        timestamp: Whether plot includes timestamp
-        tufte_style: Whether to apply Tufte-style minimalist formatting
+    Format plot spines (borders).
     """
     if tufte_style:
         # In Tufte style, remove all spines except where needed for data context
@@ -100,23 +93,29 @@ def format_spines(ax: Axes, ylabels_fmt: Optional[List[str]], sharey: bool, time
     x_bounds = ax.get_xticks()
     y_bounds = ax.get_yticks()
     
-    ax.spines['bottom'].set_bounds(min(x_bounds), max(x_bounds) * 1.025)
+    # Check if axes are log scale
+    is_xlog = ax.get_xscale() == 'log'
+    is_ylog = ax.get_yscale() == 'log'
+    
+    if not is_xlog:
+        ax.spines['bottom'].set_bounds(min(x_bounds), max(x_bounds) * 1.025)
     
     # Handle y-axis spine bounds based on data characteristics
-    if (ylabels_fmt or sharey) and not (ylabels_fmt[0].replace(".", "").isdigit()):
+    if (ylabels_fmt or sharey) and not is_ylog and not (ylabels_fmt[0].replace(".", "").isdigit()):
         ax.spines['left'].set_bounds(
             min(y_bounds) + 0.025 * min(y_bounds),
             max(y_bounds) * 1.15
         )
-    elif min(y_bounds) < 0:
-        ax.spines['left'].set_bounds(min(y_bounds) * 0.85, max(y_bounds) * 1.05)
-        ax.set_yticks(ax.get_yticks()[1:])
-    else:
-        ax.spines['left'].set_bounds(
-            min(y_bounds) * (1.05 if min(y_bounds) == 0 else 1.025),
-            max(y_bounds) * 1.025
-        )
-        ax.set_yticks(ax.get_yticks()[1:])
+    elif not is_ylog:
+        if min(y_bounds) < 0:
+            ax.spines['left'].set_bounds(min(y_bounds) * 0.85, max(y_bounds) * 1.05)
+            ax.set_yticks(ax.get_yticks()[1:])
+        else:
+            ax.spines['left'].set_bounds(
+                min(y_bounds) * (1.05 if min(y_bounds) == 0 else 1.025),
+                max(y_bounds) * 1.025
+            )
+            ax.set_yticks(ax.get_yticks()[1:])
 
 def make_fig_pretty(
     ax: Axes,

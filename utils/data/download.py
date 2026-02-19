@@ -5,8 +5,28 @@ import zipfile
 import json
 from tqdm import tqdm
 from utils.core import find_project_root
+from urllib.parse import urlparse, unquote
 
 __all__ = ['download_dataset', 'extract_files']
+
+def download_file_in_chunks(url, f_path, total_size, chunk_size=1024*1024*100):
+    """
+    Download a file in chunks using HTTP Range requests.
+    Args:
+        url (str): File URL
+        f_path (Path): Destination file path
+        total_size (int): Total file size in bytes
+        chunk_size (int): Size of each chunk in bytes (default: 100MB)
+    """
+    headers = {'User-Agent': 'Mozilla/5.0'}
+    with open(f_path, 'wb') as f:
+        for start in tqdm(range(0, total_size, chunk_size), desc=f"Chunked Download {f_path.name}", unit='B', unit_scale=True):
+            end = min(start + chunk_size - 1, total_size - 1)
+            range_header = {'Range': f'bytes={start}-{end}', **headers}
+            r = requests.get(url, headers=range_header, stream=True)
+            r.raise_for_status()
+            for chunk in r.iter_content(1024 * 1024):
+                f.write(chunk)
 
 
 def download_dataset(dataset_name: str, dest_path: str = None, extract: bool = False, 
@@ -67,7 +87,8 @@ def download_dataset(dataset_name: str, dest_path: str = None, extract: bool = F
 
     # Set up destination path
     dest_path = Path(dest_path) if dest_path else Path.cwd()
-    filename = Path(url).name
+    parsed_url = urlparse(url)
+    filename = Path(unquote(parsed_url.path)).name  # get the file name without query params
     f_path = dest_path / filename
 
     # Check if the file already exists to avoid re-downloading
@@ -85,32 +106,31 @@ def download_dataset(dataset_name: str, dest_path: str = None, extract: bool = F
 
     # Download the file with progress tracking
     try:
-        response = requests.get(url, stream=True, timeout=10)
-        response.raise_for_status()  # Raise an exception for HTTP errors
-        
-        total_size = int(response.headers.get('content-length', 0))
-        chunk_size = 1024
-        
-        # Set up progress bar
-        pbar = tqdm(total=total_size, unit='iB', unit_scale=True,
-                    desc=f'Downloading {filename}', dynamic_ncols=True)
-        
-        # Download the file in chunks to handle large files efficiently
-        with open(f_path, 'wb') as file:
-            for data in response.iter_content(chunk_size):
-                pbar.update(len(data))
-                file.write(data)
-        
-        pbar.close()
-        
-        # Verify download was successful
-        if total_size != 0 and pbar.n != total_size:
-            print('ERROR: Download incomplete. File size mismatch.')
-            return None
-    
+        headers = {'User-Agent': 'Mozilla/5.0'}
+        # Get file size first
+        head_resp = requests.head(url, headers=headers, allow_redirects=True)
+        total_size = int(head_resp.headers.get('content-length', 0))
+        if total_size >= 4 * 1024 * 1024 * 1024:  # 4GB
+            print("Large file detected, using chunked download...")
+            download_file_in_chunks(url, f_path, total_size)
+        else:
+            response = requests.get(url, stream=True, timeout=10, headers=headers)
+            response.raise_for_status()
+            chunk_size = 1024
+            pbar = tqdm(total=total_size, unit='iB', unit_scale=True,
+                        desc=f'Downloading {filename}', dynamic_ncols=True)
+            with open(f_path, 'wb') as file:
+                for data in response.iter_content(chunk_size):
+                    pbar.update(len(data))
+                    file.write(data)
+            pbar.close()
+            if total_size != 0 and pbar.n != total_size:
+                print('ERROR: Download incomplete. File size mismatch.')
+                return None
+            
     except requests.exceptions.RequestException as e:
         print(f'ERROR: Download failed - {e}')
-        if f_path.exists():  # Clean up partial file
+        if f_path.exists():
             f_path.unlink()
         return None
         
