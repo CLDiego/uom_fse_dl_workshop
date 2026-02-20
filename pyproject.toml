@@ -1,0 +1,23 @@
+[project]
+name = "uom-fse-dl-workshop"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "albumentations>=2.0.8",
+    "ipykernel>=7.2.0",
+    "ipympl>=0.10.0",
+    "jupyter>=1.1.1",
+    "matplotlib>=3.10.8",
+    "numpy>=2.4.2",
+    "pandas>=3.0.0",
+    "plotly>=6.5.2",
+    "requests>=2.32.5",
+    "scikit-learn>=1.8.0",
+    "torch>=2.10.0",
+    "torchaudio>=2.10.0",
+    "torchvision>=0.25.0",
+    "tqdm>=4.67.3",
+    "urllib3>=2.6.3",
+]

@@ -3,6 +3,5 @@ torch_fse/
 *__pycache__/
 *models
 *scratch*
-pyproject.toml
 uv.lock
 .python-version
