@@ -1,4 +1,6 @@
 ![Workshop Banner](https://github.com/CLDiego/uom_fse_dl_workshop/blob/main/figs/banner.png)
+
+[![Version](https://img.shields.io/badge/version-1.5.0-blue?logo=github)](https://github.com/CLDiego/uom_fse_dl_workshop)
 <!-- [![GitHub Pages](https://img.shields.io/badge/View%20Site-GitHub%20Pages-blue?logo=github)](https://cldiego.github.io/uom_fse_dl_workshop/) -->
 
 # Deep Learning with PyTorch – Workshop
@@ -97,25 +99,25 @@ Then open any `SE##_CA_*.ipynb` notebook and run the first setup cell.
 
 ### Day 1 – 23 February (Sessions 1–3)
 
-| Time            | Activity                                         |
-| --------------- | ------------------------------------------------ |
-| 08:30           | Registration, setup & troubleshooting            |
-| 09:00 – 10:15   | **Session 1:** Introduction to PyTorch           |
-| 10:15 – 10:30   | Break                                            |
-| 10:30 – 11:45   | **Session 2:** Artificial Neural Networks        |
-| 11:45 – 12:45   | Lunch                                            |
-| 12:45 – 14:00   | **Session 3:** Training Neural Networks          |
+| Time            | Activity                                         | Notebook |
+| --------------- | ------------------------------------------------ | -------- |
+| 08:30           | Registration, setup & troubleshooting            | |
+| 09:00 – 10:15   | **Session 1:** Introduction to PyTorch           | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/CLDiego/uom_fse_dl_workshop/blob/main/SE01_CA_Intro_to_pytorch.ipynb) |
+| 10:15 – 10:30   | Break                                            | |
+| 10:30 – 11:45   | **Session 2:** Artificial Neural Networks        | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/CLDiego/uom_fse_dl_workshop/blob/main/SE02_CA_Artificial_neural_networks.ipynb) |
+| 11:45 – 12:45   | Lunch                                            | |
+| 12:45 – 14:00   | **Session 3:** Training Neural Networks          | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/CLDiego/uom_fse_dl_workshop/blob/main/SE03_CA_Training_neural_networks.ipynb) |
 
 ### Day 2 – 2 March (Sessions 4–5)
 
-| Time            | Activity                                                  |
-| --------------- | --------------------------------------------------------- |
-| 08:30           | Setup continuation                                        |
-| 09:00 – 10:30   | **Session 4:** Convolutional Neural Networks (CNNs)       |
-| 10:30 – 10:45   | Break                                                     |
-| 10:45 – 12:00   | **Session 5:** Transfer Learning & Image Segmentation     |
-| 12:00 – 13:00   | Lunch                                                     |
-| 13:00 – 14:00   | Wrap-up, discussion & Q&A                                 |
+| Time            | Activity                                                  | Notebook |
+| --------------- | --------------------------------------------------------- | -------- |
+| 08:30           | Setup continuation                                        | |
+| 09:00 – 10:30   | **Session 4:** Convolutional Neural Networks (CNNs)       | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/CLDiego/uom_fse_dl_workshop/blob/main/SE04_CA_Convolutional_Neural_Networks.ipynb) |
+| 10:30 – 10:45   | Break                                                     | |
+| 10:45 – 12:00   | **Session 5:** Transfer Learning & Image Segmentation     | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/CLDiego/uom_fse_dl_workshop/blob/main/SE05_CA_Transfer_Learning.ipynb) |
+| 12:00 – 13:00   | Lunch                                                     | |
+| 13:00 – 14:00   | Wrap-up, discussion & Q&A                                 | |
 
 > Light refreshments and lunch will be provided on both days.
 

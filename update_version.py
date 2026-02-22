@@ -98,9 +98,33 @@ if __commit__:
     
     print(f"Version updated: {version}+{commit}")
 
+def update_readme_badge(version):
+    """Update the version badge in README.md to reflect the current version."""
+    readme_path = 'README.md'
+
+    with open(readme_path, 'r') as f:
+        content = f.read()
+
+    updated = re.sub(
+        r'(\[!\[Version\]\(https://img\.shields\.io/badge/version-)[\d.]+(-blue)',
+        rf'\g<1>{version}\2',
+        content
+    )
+
+    if updated == content:
+        print("README.md badge already up to date.")
+        return
+
+    with open(readme_path, 'w') as f:
+        f.write(updated)
+
+    print(f"README.md version badge updated to {version}")
+
+
 def main():
     version, commit = get_git_version()
     update_version_file(version, commit)
+    update_readme_badge(version)
 
 if __name__ == "__main__":
     main()
