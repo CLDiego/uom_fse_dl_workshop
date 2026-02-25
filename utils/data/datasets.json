@@ -65,7 +65,7 @@
 
     "// CLASSIFICATION DATASETS": {},
     "neu-cls": {
-        "url": "https://figshare.com/ndownloader/files/54094775",
+        "url": "https://github.com/CLDiego/uom_fse_dl_workshop/raw/refs/heads/main/training_data/NEU-CLS.zip",
         "filename": "NEU-CLS.zip",
         "description": "NEU-CLS: Surface Defect Classification dataset from the Surface Inspection Laboratory of Northeastern University, covering 6 common strip surface defect types (Crazing, Inclusion, Patches, Pitted Surface, Rolled-in Scale, Scratches), 300 grayscale 200×200 images per class",
         "website": "https://figshare.com/articles/dataset/NEU-CLS/28903550",
