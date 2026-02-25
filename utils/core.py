@@ -219,6 +219,12 @@ class ExerciseChecker:
         elif key == "activation":
             return self._check_activation_layers(student_value, expected, key, exercise_data)
 
+        elif key == "depthwise_blocks":
+            return self._check_depthwise_blocks(student_value, expected, key, exercise_data)
+
+        elif key == "global_avg_pool":
+            return self._check_adaptive_pooling(student_value, expected, key, exercise_data)
+
         elif key.endswith("dataloader") and "loader_type" in expected:
             return self._check_dataloader(student_value, expected, key, exercise_data)
 
@@ -820,6 +826,65 @@ class ExerciseChecker:
         return True
 
 
+    def _check_depthwise_blocks(self, student_model, expected, key: str, exercise_data: dict) -> bool:
+        """Validate depthwise separable convolution pattern in a MobileNet-style model."""
+        if not isinstance(student_model, torch.nn.Module):
+            self._print_error(f"{key} should be a PyTorch model (nn.Module)")
+            self._show_relevant_hint(exercise_data["hints"], key)
+            return False
+
+        # Depthwise: Conv2d where groups == in_channels and groups > 1
+        depthwise_convs = [
+            m for m in student_model.modules()
+            if isinstance(m, torch.nn.Conv2d) and m.groups == m.in_channels and m.groups > 1
+        ]
+        # Pointwise: 1×1 Conv2d
+        pointwise_convs = [
+            m for m in student_model.modules()
+            if isinstance(m, torch.nn.Conv2d)
+            and (m.kernel_size == (1, 1) or m.kernel_size == 1)
+        ]
+
+        min_blocks = expected.get("min_blocks", 1)
+        if len(depthwise_convs) < min_blocks:
+            self._print_error(
+                f"{key} should have at least {min_blocks} depthwise Conv2d layer(s) "
+                f"(groups=in_channels), found {len(depthwise_convs)}. "
+                f"Set groups=in_channels to create a depthwise convolution."
+            )
+            self._show_relevant_hint(exercise_data["hints"], key)
+            return False
+
+        if expected.get("has_pointwise", False) and not pointwise_convs:
+            self._print_error(
+                f"{key} should include at least one pointwise (1×1) Conv2d layer"
+            )
+            self._show_relevant_hint(exercise_data["hints"], key)
+            return False
+
+        return True
+
+    def _check_adaptive_pooling(self, student_model, expected, key: str, exercise_data: dict) -> bool:
+        """Validate that the model contains AdaptiveAvgPool2d (global average pooling)."""
+        if not isinstance(student_model, torch.nn.Module):
+            self._print_error(f"{key} should be a PyTorch model (nn.Module)")
+            self._show_relevant_hint(exercise_data["hints"], key)
+            return False
+
+        has_adaptive = any(
+            isinstance(m, torch.nn.AdaptiveAvgPool2d)
+            for m in student_model.modules()
+        )
+        if not has_adaptive:
+            self._print_error(
+                f"{key} should include torch.nn.AdaptiveAvgPool2d for global average pooling. "
+                f"Use AdaptiveAvgPool2d((1, 1)) to reduce each feature map to a single value."
+            )
+            self._show_relevant_hint(exercise_data["hints"], key)
+            return False
+
+        return True
+
     def _check_dataloader(self, student_dataloader, expected, key: str, exercise_data: dict) -> bool:
         """Validate PyTorch DataLoader configuration"""
         from torch.utils.data import DataLoader
@@ -1111,6 +1176,37 @@ class ExerciseChecker:
                             f"{key} layer {layer_name} has incorrect {prop_name}")
                         self._show_relevant_hint(exercise_data["hints"], key)
                         return False
+
+        # --- Dispatch to specialised CNN/MobileNet checkers -----------------
+        if key.endswith("_architecture") and "model_type" in expected:
+            return self._check_model_architecture(student_model, expected, key, exercise_data)
+
+        if key in ("conv_layer", "conv_layers"):
+            return self._check_conv_layers(student_model, expected, key, exercise_data)
+
+        if key == "flatten_operation":
+            return self._check_flatten_operation(student_model, expected, key, exercise_data)
+
+        if key == "pooling_layers":
+            return self._check_pooling_layers(student_model, expected, key, exercise_data)
+
+        if key == "batch_norm_layers":
+            return self._check_batch_norm_layers(student_model, expected, key, exercise_data)
+
+        if key == "dropout_layers":
+            return self._check_dropout_layers(student_model, expected, key, exercise_data)
+
+        if key == "linear_layers":
+            return self._check_linear_layers(student_model, expected, key, exercise_data)
+
+        if key == "activation":
+            return self._check_activation_layers(student_model, expected, key, exercise_data)
+
+        if key == "depthwise_blocks":
+            return self._check_depthwise_blocks(student_model, expected, key, exercise_data)
+
+        if key == "global_avg_pool":
+            return self._check_adaptive_pooling(student_model, expected, key, exercise_data)
 
         return True
 
