@@ -64,6 +64,15 @@
     },
 
     "// CLASSIFICATION DATASETS": {},
+    "neu-cls": {
+        "url": "https://figshare.com/ndownloader/files/54094775",
+        "filename": "NEU-CLS.zip",
+        "description": "NEU-CLS: Surface Defect Classification dataset from the Surface Inspection Laboratory of Northeastern University, covering 6 common strip surface defect types (Crazing, Inclusion, Patches, Pitted Surface, Rolled-in Scale, Scratches), 300 grayscale 200×200 images per class",
+        "website": "https://figshare.com/articles/dataset/NEU-CLS/28903550",
+        "authors": ["Surface Inspection Laboratory, Northeastern University"],
+        "year": 2024,
+        "category": "image classification"
+    },
     "promoters": {
         "url": "https://archive.ics.uci.edu/static/public/67/molecular+biology+promoter+gene+sequences.zip",
         "description": "Promoter sequences of E. coli for predicting promoter regions",

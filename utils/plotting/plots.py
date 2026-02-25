@@ -508,7 +508,12 @@ def show_model_predictions(model, data_loader, class_names, num_images=12, title
         
         # Display image (clipping to [0,1] range for proper display)
         img_display = np.clip(sample['image'], 0, 1)
-        ax.imshow(img_display)
+        
+        # Handle grayscale images (1 channel) vs RGB (3 channels)
+        if img_display.ndim == 3 and img_display.shape[2] == 1:
+            ax.imshow(img_display.squeeze(2), cmap='gray')
+        else:
+            ax.imshow(img_display)
         
         pred_class = class_names[sample['pred']]
         true_class = class_names[sample['true']]
