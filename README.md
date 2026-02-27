@@ -144,7 +144,7 @@ You'll work with the following datasets across the sessions:
 | ------- | ---- |
 | **Higgs Boson Dataset** | Binary classification with high-energy physics data |
 | **Heart & Lung Sounds (HLS-CMDS)** | Anomaly detection using autoencoders |
-| **Historical Concrete Crack Dataset** | CNN-based image classification |
+| **NEU Surface Defects Dataset** | CNN-based image classification |
 | **ISIC Skin Lesion Dataset** | Medical image segmentation using U-Net and transfer learning |
 
 ---
@@ -165,37 +165,7 @@ UoM_fse_dl_workshop/
 
 ---
 
-## Using the Exercise Checker ✅
-
-Throughout the notebooks, you’ll find 🎯 exercises. Use the built-in checker to validate your answers.
-
-```python
-answer = {'your_solution': result}
-checker.check_exercise(1, answer)
-```
-
-### Requesting Hints 💡
-
-```python
-checker.display_hints(1)
-```
-
-✔️ Correct = green check
-❌ Incorrect = feedback provided
-💬 Hints are tailored to the task
-
----
-
-## Common Workflows
-
-1. Read the exercise and implement the solution.
-2. Use the checker to validate your work.
-3. Request hints if needed.
-4. Learn from any mistakes and try again.
-
----
-
-## Prerequisites 📾
+## Prerequisites 🔧
 
 * Basic Python programming skills
 * Familiarity with Jupyter Notebooks, NumPy, and Pandas
