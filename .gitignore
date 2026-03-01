@@ -5,3 +5,4 @@ torch_fse/
 *scratch*
 uv.lock
 .python-version
+.DS_Store
